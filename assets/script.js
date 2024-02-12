@@ -5,36 +5,78 @@ var playerAttack = 10;
 
 var enemyName = "Draco";
 var enemyHealth = 30;
-var enemyAttack = 200;
+var enemyAttack = 20;
 
-var fight = function() {
+var fight = function () {
   window.alert("The fight has begun!");
 
   window.alert(
     "This is a league where  everyone is for only one. Themselves. Through combating various opponents at once the winner will win it all. " +
       playerName +
-      " it's time to engage and rise to the top!");
+      " it's time to engage and rise to the top!"
+  );
 
-      //Subtract the value of the playerattack from the value of the enemyhealth and use that result to update the enemyhealth
-    enemyHealth = enemyHealth - playerAttack
-    
-      //log a message in the console to show it worked
-      console.log(playerName + " attacked " + enemyName + ". " + enemyName + " has " + enemyHealth + " health remaining !");
-      //subtact the value of the enemyattack fromt he valued of the playerhealth and use the result to update the playerhealth 
-      playerHealth = playerHealth- enemyAttack
-      //log a resulting message to show it worked in the console 
-      console.log(enemyName + " attacked " + playerName + ". " + playerName + " has " + playerHealth + " health remaining !")
+  //Asking the player if they would like to start a combat round
+  var promptFight = window.prompt(
+    "Are you ready for combat " + playerName + " ?  Enter 'FIGHT' or 'SKIP'"
+  );
+  console.log(promptFight);
 
-      //Check the fighters health
-      if (playerHealth <= 0) {
-        console.log("You were knocked out, better luck next time!")
-      }
-      else {console.log("That wasn't enough to take " + playerName + " out the battle !!!")}
+  if (promptFight === "fight" || promptFight === " FIGHT ") {
+    //Player Attack:Subtract the value of the playerattack from the value of the enemyhealth and use that result to update the enemyhealth
+    enemyHealth = enemyHealth - playerAttack;
 
-    };
+    //Check enemy health
+    window.alert(
+      playerName +
+        " attacked " +
+        enemyName +
+        ". " +
+        enemyName +
+        " has " +
+        enemyHealth +
+        " health remaining !"
+    );
+// Check enemy status 
+    if (enemyHealth <= 0) {
+      window.alert(enemyHealth + " has fallen !");
+    } else {
+     window.alert(
+        "Even with that devastating attack " + enemyName + " is still standing !"
+      );
+    }
+    //Enemy Attack:subtact the value of the enemyattack fromt he valued of the playerhealth and use the result to update the playerhealth
+    playerHealth = playerHealth - enemyAttack;
+    //Check Player Health
+    window.alert(
+      enemyName +
+        " attacked " +
+        playerName +
+        ". " +
+        playerName +
+        " has " +
+        playerHealth +
+        " health remaining !"
+    );
+
+    //Check player status
+    if (playerHealth <= 0) {
+      window.alert("You were knocked out, better luck next time!");
+    } else {
+      window.alert(
+        "That wasn't enough to take " + playerName + " out the battle !!!"
+      );
+    }
+  }
+  else if (promptFight === "skip" || promptFight === "SKIP") {
+    window.alert(" Not Ready? A withdrawal fee will be charged to you're account. Come back when you're ready to to rumble");
+  }
+  else {
+    window.alert(" Are you fighting or Not ???");
+  }
   
-     
-  
- 
 
- fight();
+  };
+
+
+fight();
