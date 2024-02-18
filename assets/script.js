@@ -11,7 +11,13 @@ var enemyAttack = 20;
 console.log(enemyNames.length);
 console.log(enemyNames);
 console.log(enemyNames[3]);
-for(var i = 0; i < 3; i ++) { console.log("apple")};
+for(var i = 0; i < enemyNames.length; i ++) { 
+  console.log(enemyNames.length);
+  console.log(enemyNames[i]);
+  console.log(i);
+  console.log(enemyNames[i] + " is at " + i + " index"); 
+
+};
 
 var fight = function () {
   window.alert("Welcome to Random Encounter!!!!!");
