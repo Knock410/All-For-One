@@ -4,9 +4,14 @@ var playerHealth = 100;
 var playerAttack = 10;
 var playerMoney = 10;
 
-var enemyName = "Draco";
+
+var enemyNames = [ "Draco", "Hanami", "Lance"];
 var enemyHealth = 30;
 var enemyAttack = 20;
+console.log(enemyNames.length);
+console.log(enemyNames);
+console.log(enemyNames[3]);
+for(var i = 0; i < 3; i ++) { console.log("apple")};
 
 var fight = function () {
   window.alert("Welcome to Random Encounter!!!!!");
@@ -99,4 +104,4 @@ var fight = function () {
   }
 };
 
-fight();
+// fight();
