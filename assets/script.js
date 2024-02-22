@@ -1,7 +1,7 @@
 window.alert("You're good and going to be greater.");
 var playerName = window.prompt("What is your name fighter ?");
 var playerHealth = 100;
-var playerAttack = 10;
+var playerAttack = 25;
 var playerMoney = 10;
 
 var enemyNames = ["Draco", "Hanami", "Lance"];
@@ -45,6 +45,7 @@ var fight = function (enemyName) {
       // Check enemy status
       if (enemyHealth <= 0) {
         window.alert(enemyName + " has fallen !");
+        break
       } else {
         window.alert(
           "Even with that devastating attack " +
@@ -106,7 +107,7 @@ var fight = function (enemyName) {
   }
 };
 for (var i = 0; i < enemyNames.length; i++) {
-  // debugger;
+   debugger;
   //Allows the loop to intergrate different combatants for the use to fight and start with full health of 50 points
   var  pickedEnemyName = enemyNames[i];
   enemyHealth = 50;
