@@ -17,7 +17,7 @@ window.alert(
 );
 
 var fight = function (enemyName) {
-  while (enemyHealth > 0) {
+  while (playerHealth > 0 && enemyHealth > 0) {
     //Asking the player if they would like to start a combat round
     var promptFight = window.prompt(
       "Are you ready for combat " + playerName + " ?  Enter 'FIGHT' or 'SKIP'"
@@ -69,6 +69,8 @@ var fight = function (enemyName) {
       //Check player status
       if (playerHealth <= 0) {
         window.alert("You were knocked out, better luck next time!");
+        //Breaks out of the current loop if the player is to lose all health points
+        break
       } else {
         window.alert(
           "That wasn't enough to take " + playerName + " out the battle !!!"
@@ -105,6 +107,7 @@ var fight = function (enemyName) {
 };
 for (var i = 0; i < enemyNames.length; i++) {
   // debugger;
+  //Allows the loop to intergrate different combatants for the use to fight and start with full health of 50 points
   var  pickedEnemyName = enemyNames[i];
   enemyHealth = 50;
   fight(pickedEnemyName);
