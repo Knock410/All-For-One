@@ -1,110 +1,111 @@
 window.alert("You're good and going to be greater.");
-var playerName = window.prompt("What is your name fighter");
+var playerName = window.prompt("What is your name fighter ?");
 var playerHealth = 100;
 var playerAttack = 10;
 var playerMoney = 10;
 
-
-var enemyNames = [ "Draco", "Hanami", "Lance"];
+var enemyNames = ["Draco", "Hanami", "Lance"];
 var enemyHealth = 50;
 var enemyAttack = 12;
 
-
 window.alert("Welcome to Random Encounter!!!!!");
 
-  window.alert(
-    "This is a league where  everyone is for only one. Themselves. Through combating various opponents at once the winner will win it all. " +
-      playerName +
-      " it's time to engage and rise to the top!"
-  );
-
-
+window.alert(
+  "This is a league where  everyone is for only one. Themselves. Through combating various opponents at once the winner will win it all. " +
+    playerName +
+    " it's time to engage and rise to the top!"
+);
 
 var fight = function (enemyName) {
-
-  //Asking the player if they would like to start a combat round
-  var promptFight = window.prompt(
-    "Are you ready for combat " + playerName + " ?  Enter 'FIGHT' or 'SKIP'"
-  );
-  
-
-  if (promptFight === "fight" || promptFight === " FIGHT " || promptFight === "Fight") {
-    //Player Attack:Subtract the value of the playerattack from the value of the enemyhealth and use that result to update the enemyhealth
-    enemyHealth = enemyHealth - playerAttack;
-
-    //Check enemy health
-    console.log(
-      playerName +
-        " attacked " +
-        enemyName +
-        ". " +
-        enemyName +
-        " has " +
-        enemyHealth +
-        " health remaining !"
+  while (enemyHealth > 0) {
+    //Asking the player if they would like to start a combat round
+    var promptFight = window.prompt(
+      "Are you ready for combat " + playerName + " ?  Enter 'FIGHT' or 'SKIP'"
     );
-    // Check enemy status
-    if (enemyHealth <= 0) {
- window.alert(enemyHealth + " has fallen !");
-    } else {
-    window.alert(
-        "Even with that devastating attack " +
+
+    if (
+      promptFight === "fight" ||
+      promptFight === " FIGHT " ||
+      promptFight === "Fight"
+    ) {
+      //Player Attack:Subtract the value of the playerattack from the value of the enemyhealth and use that result to update the enemyhealth
+      enemyHealth = enemyHealth - playerAttack;
+
+      //Check enemy health
+      console.log(
+        playerName +
+          " attacked " +
           enemyName +
-          " is still standing !"
+          ". " +
+          enemyName +
+          " has " +
+          enemyHealth +
+          " health remaining !"
       );
-    }
-    //Enemy Attack:subtact the value of the enemyattack fromt he valued of the playerhealth and use the result to update the playerhealth
-    playerHealth = playerHealth - enemyAttack;
-    //Check Player Health
-    console.log(
-      enemyName +
-        " attacked " +
-        playerName +
-        ". " +
-        playerName +
-        " has " +
-        playerHealth +
-        " health remaining !"
-    );
-
-    //Check player status
-    if (playerHealth <= 0) {
-      window.alert("You were knocked out, better luck next time!");
-    } else {
-      window.alert(
-        "That wasn't enough to take " + playerName + " out the battle !!!"
-      );
-    }
-  } else if (promptFight === "skip" || promptFight === "SKIP") {
-    var confirmSkip = window.confirm(" Are you sure you want to withdraw? ");
-
-    if (confirmSkip) {
-      window.alert(
-        " Not Ready? A withdrawal fee will be charged to you're account. Come back when you're ready to to rumble."
-      );
-      var fee = 2;
-
-      playerMoney = playerMoney - fee;
-      window.alert(
-        playerName +
-          " paid a " +
-          fee +
-          " dollar withrawal fee. " +
+      // Check enemy status
+      if (enemyHealth <= 0) {
+        window.alert(enemyName + " has fallen !");
+      } else {
+        window.alert(
+          "Even with that devastating attack " +
+            enemyName +
+            " is still standing !"
+        );
+      }
+      //Enemy Attack:subtact the value of the enemyattack fromt he valued of the playerhealth and use the result to update the playerhealth
+      playerHealth = playerHealth - enemyAttack;
+      //Check Player Health
+      console.log(
+        enemyName +
+          " attacked " +
+          playerName +
+          ". " +
           playerName +
           " has " +
-          playerMoney +
-          " dollars left."
+          playerHealth +
+          " health remaining !"
       );
+
+      //Check player status
+      if (playerHealth <= 0) {
+        window.alert("You were knocked out, better luck next time!");
+      } else {
+        window.alert(
+          "That wasn't enough to take " + playerName + " out the battle !!!"
+        );
+      }
+    } else if (promptFight === "skip" || promptFight === "SKIP") {
+      var confirmSkip = window.confirm(" Are you sure you want to withdraw? ");
+
+      if (confirmSkip) {
+        window.alert(
+          " Not Ready? A withdrawal fee will be charged to you're account. Come back when you're ready to to rumble."
+        );
+        var fee = 2;
+
+        playerMoney = playerMoney - fee;
+        window.alert(
+          playerName +
+            " paid a " +
+            fee +
+            " dollar withrawal fee. " +
+            playerName +
+            " has " +
+            playerMoney +
+            " dollars left."
+        );
+      } else {
+        window.alert(" Are you fighting or not ???");
+        fight();
+      }
     } else {
-      window.alert(" Are you fighting or not ???");
-      fight();
+      window.alert(" Please choose to proceed into the fray or to back out!!!");
     }
-  } else {
-    window.alert(" Please choose to proceed into the fray or to back out!!!");
   }
 };
-for(var i = 0; i < enemyNames.length; i ++) { 
-
-  fight(enemyNames[i]);
-};
-
+for (var i = 0; i < enemyNames.length; i++) {
+  // debugger;
+  var  pickedEnemyName = enemyNames[i];
+  enemyHealth = 50;
+  fight(pickedEnemyName);
+}
