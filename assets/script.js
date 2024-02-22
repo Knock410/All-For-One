@@ -6,21 +6,11 @@ var playerMoney = 10;
 
 
 var enemyNames = [ "Draco", "Hanami", "Lance"];
-var enemyHealth = 30;
-var enemyAttack = 20;
-console.log(enemyNames.length);
-console.log(enemyNames);
-console.log(enemyNames[3]);
-for(var i = 0; i < enemyNames.length; i ++) { 
-  console.log(enemyNames.length);
-  console.log(enemyNames[i]);
-  console.log(i);
-  console.log(enemyNames[i] + " is at " + i + " index"); 
+var enemyHealth = 50;
+var enemyAttack = 12;
 
-};
 
-var fight = function () {
-  window.alert("Welcome to Random Encounter!!!!!");
+window.alert("Welcome to Random Encounter!!!!!");
 
   window.alert(
     "This is a league where  everyone is for only one. Themselves. Through combating various opponents at once the winner will win it all. " +
@@ -28,18 +18,22 @@ var fight = function () {
       " it's time to engage and rise to the top!"
   );
 
+
+
+var fight = function (enemyName) {
+
   //Asking the player if they would like to start a combat round
   var promptFight = window.prompt(
     "Are you ready for combat " + playerName + " ?  Enter 'FIGHT' or 'SKIP'"
   );
-  console.log(promptFight);
+  
 
-  if (promptFight === "fight" || promptFight === " FIGHT ") {
+  if (promptFight === "fight" || promptFight === " FIGHT " || promptFight === "Fight") {
     //Player Attack:Subtract the value of the playerattack from the value of the enemyhealth and use that result to update the enemyhealth
     enemyHealth = enemyHealth - playerAttack;
 
     //Check enemy health
-    window.alert(
+    console.log(
       playerName +
         " attacked " +
         enemyName +
@@ -51,9 +45,9 @@ var fight = function () {
     );
     // Check enemy status
     if (enemyHealth <= 0) {
-      window.alert(enemyHealth + " has fallen !");
+ window.alert(enemyHealth + " has fallen !");
     } else {
-      window.alert(
+    window.alert(
         "Even with that devastating attack " +
           enemyName +
           " is still standing !"
@@ -62,7 +56,7 @@ var fight = function () {
     //Enemy Attack:subtact the value of the enemyattack fromt he valued of the playerhealth and use the result to update the playerhealth
     playerHealth = playerHealth - enemyAttack;
     //Check Player Health
-    window.alert(
+    console.log(
       enemyName +
         " attacked " +
         playerName +
@@ -109,5 +103,8 @@ var fight = function () {
     window.alert(" Please choose to proceed into the fray or to back out!!!");
   }
 };
+for(var i = 0; i < enemyNames.length; i ++) { 
 
-// fight();
+  fight(enemyNames[i]);
+};
+
