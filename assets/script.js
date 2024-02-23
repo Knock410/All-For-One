@@ -1,7 +1,7 @@
 window.alert("You're good and going to be greater.");
 var playerName = window.prompt("What is your name fighter ?");
 var playerHealth = 100;
-var playerAttack = 25;
+var playerAttack = 20;
 var playerMoney = 10;
 
 var enemyNames = ["Draco", "Hanami", "Lance"];
@@ -23,68 +23,14 @@ var fight = function (enemyName) {
       "Are you ready for combat " + playerName + " ?  Enter 'FIGHT' or 'SKIP'"
     );
 
-    if (
-      promptFight === "fight" ||
-      promptFight === " FIGHT " ||
-      promptFight === "Fight"
-    ) {
-      //Player Attack:Subtract the value of the playerattack from the value of the enemyhealth and use that result to update the enemyhealth
-      enemyHealth = enemyHealth - playerAttack;
-
-      //Check enemy health
-      console.log(
-        playerName +
-          " attacked " +
-          enemyName +
-          ". " +
-          enemyName +
-          " has " +
-          enemyHealth +
-          " health remaining !"
-      );
-      // Check enemy status
-      if (enemyHealth <= 0) {
-        window.alert(enemyName + " has fallen !");
-        break
-      } else {
-        window.alert(
-          "Even with that devastating attack " +
-            enemyName +
-            " is still standing !"
-        );
-      }
-      //Enemy Attack:subtact the value of the enemyattack fromt he valued of the playerhealth and use the result to update the playerhealth
-      playerHealth = playerHealth - enemyAttack;
-      //Check Player Health
-      console.log(
-        enemyName +
-          " attacked " +
-          playerName +
-          ". " +
-          playerName +
-          " has " +
-          playerHealth +
-          " health remaining !"
-      );
-
-      //Check player status
-      if (playerHealth <= 0) {
-        window.alert("You were knocked out, better luck next time!");
-        //Breaks out of the current loop if the player is to lose all health points
-        break
-      } else {
-        window.alert(
-          "That wasn't enough to take " + playerName + " out the battle !!!"
-        );
-      }
-    } else if (promptFight === "skip" || promptFight === "SKIP") {
+    if (promptFight === "skip" || promptFight === "SKIP") {
       var confirmSkip = window.confirm(" Are you sure you want to withdraw? ");
 
-      if (confirmSkip) {
+      FIXME: if (confirmSkip) {
         window.alert(
           " Not Ready? A withdrawal fee will be charged to you're account. Come back when you're ready to to rumble."
         );
-        var fee = 2;
+        var fee = 10;
 
         playerMoney = playerMoney - fee;
         window.alert(
@@ -97,19 +43,73 @@ var fight = function (enemyName) {
             playerMoney +
             " dollars left."
         );
-      } else {
-        window.alert(" Are you fighting or not ???");
-        fight();
+        console.log("playerMoney", playerMoney);
+        break;
+        //   } else {
+        //     window.alert(" Are you fighting or not ???");
+        //     fight();
+        //   }
+        // } else {
+        //   window.alert(" Please choose to proceed into the fray or to back out!!!");
+        // }
       }
+    }
+    //Player Attack:Subtract the value of the playerattack from the value of the enemyhealth and use that result to update the enemyhealth
+    enemyHealth = enemyHealth - playerAttack;
+
+    //Check enemy health
+    console.log(
+      playerName +
+        " attacked " +
+        enemyName +
+        ". " +
+        enemyName +
+        " has " +
+        enemyHealth +
+        " health remaining !"
+    );
+    // Check enemy status
+    if (enemyHealth <= 0) {
+      window.alert(enemyName + " has fallen !");
+      break;
     } else {
-      window.alert(" Please choose to proceed into the fray or to back out!!!");
+      window.alert(
+        "Even with that devastating attack " +
+          enemyName +
+          " is still standing !"
+      );
+    }
+    //Enemy Attack:subtact the value of the enemyattack fromt he valued of the playerhealth and use the result to update the playerhealth
+    playerHealth = playerHealth - enemyAttack;
+    //Check Player Health
+    console.log(
+      enemyName +
+        " attacked " +
+        playerName +
+        ". " +
+        playerName +
+        " has " +
+        playerHealth +
+        " health remaining !"
+    );
+
+    //Check player status
+    if (playerHealth <= 0) {
+      window.alert("You were knocked out, better luck next time!");
+      //Breaks out of the current loop if the player is to lose all health points
+      break;
+    } else {
+      window.alert(
+        "That wasn't enough to take " + playerName + " out the battle !!!"
+      );
     }
   }
 };
+
 for (var i = 0; i < enemyNames.length; i++) {
-   debugger;
+  // debugger;
   //Allows the loop to intergrate different combatants for the use to fight and start with full health of 50 points
-  var  pickedEnemyName = enemyNames[i];
+  var pickedEnemyName = enemyNames[i];
   enemyHealth = 50;
   fight(pickedEnemyName);
 }
