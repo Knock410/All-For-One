@@ -27,7 +27,7 @@ var fight = function (enemyName) {
     if (promptFight === "skip" || promptFight === "SKIP") {
       var confirmSkip = window.confirm(" Are you sure you want to withdraw? ");
 
-       if (confirmSkip) {
+      if (confirmSkip) {
         window.alert(
           " Not Ready? A withdrawal fee will be charged to you're account. Come back when you're ready to to rumble."
         );
@@ -95,27 +95,35 @@ var fight = function (enemyName) {
     );
 
     //Check player status
-    if (playerHealth <= 0) {
-      window.alert("You were knocked out, better luck next time! Game Over!");
-      //Breaks out of the current loop if the player is to lose all health points, game over 
-      break;
-    } else {
-      window.alert(
-        "That wasn't enough to take " + playerName + " out the battle !!!"
-      );
+    if (playerHealth > 0) {
+      {
+        window.alert(
+          "That wasn't enough to take " + playerName + " out the battle !!!"
+        );
+      }
     }
   }
 };
+//Start Game function 
+  var startGame = function () {
+    for (var i = 0; i < enemyNames.length; i++) {
+        // debugger;
+      //Allows the loop to intergrate different combatants for the use to fight and start with full health of 50 points
+      if (playerHealth > 0) {
+        //Allows to show what round it is after each defeat of the enemy
+        window.alert("Welcome to Random Encounter! Round " + (i + 1));
 
-for (var i = 0; i < enemyNames.length; i++) {
-  //  debugger;
-  //Allows the loop to intergrate different combatants for the use to fight and start with full health of 50 points
-  if(playerHealth > 0) {
-    //Allows to show what round it is after each defeat of the enemy 
-    window.alert("Welcome to Random Encounter! Round " + (i + 1));
-  }
-  var pickedEnemyName = enemyNames[i];
-  enemyHealth = 50;
-  //Function call. This is essentially the start button of the function 
-  fight(pickedEnemyName);
-}
+        var pickedEnemyName = enemyNames[i];
+        enemyHealth = 50;
+        //Function call. This is essentially the start button of the function
+        fight(pickedEnemyName);
+      } else {
+        window.alert("You have been knocked out ! Better luck next time ! ");
+        break;
+      }
+    }
+  };
+
+
+startGame(); 
+
