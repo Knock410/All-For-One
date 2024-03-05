@@ -5,10 +5,11 @@ var playerAttack = 20;
 var playerMoney = 10;
 
 var enemyNames = ["Draco", "Hanami", "Lance"];
+
 var enemyHealth = 50;
 var enemyAttack = 12;
 
-window.alert("Welcome to Random Encounter!!!!!");
+// window.alert("Welcome to Random Encounter!!!!!");
 
 window.alert(
   "This is a league where  everyone is for only one. Themselves. Through combating various opponents at once the winner will win it all. " +
@@ -26,7 +27,7 @@ var fight = function (enemyName) {
     if (promptFight === "skip" || promptFight === "SKIP") {
       var confirmSkip = window.confirm(" Are you sure you want to withdraw? ");
 
-      FIXME: if (confirmSkip) {
+       if (confirmSkip) {
         window.alert(
           " Not Ready? A withdrawal fee will be charged to you're account. Come back when you're ready to to rumble."
         );
@@ -95,8 +96,8 @@ var fight = function (enemyName) {
 
     //Check player status
     if (playerHealth <= 0) {
-      window.alert("You were knocked out, better luck next time!");
-      //Breaks out of the current loop if the player is to lose all health points
+      window.alert("You were knocked out, better luck next time! Game Over!");
+      //Breaks out of the current loop if the player is to lose all health points, game over 
       break;
     } else {
       window.alert(
@@ -107,9 +108,14 @@ var fight = function (enemyName) {
 };
 
 for (var i = 0; i < enemyNames.length; i++) {
-  // debugger;
+  //  debugger;
   //Allows the loop to intergrate different combatants for the use to fight and start with full health of 50 points
+  if(playerHealth > 0) {
+    //Allows to show what round it is after each defeat of the enemy 
+    window.alert("Welcome to Random Encounter! Round " + (i + 1));
+  }
   var pickedEnemyName = enemyNames[i];
   enemyHealth = 50;
+  //Function call. This is essentially the start button of the function 
   fight(pickedEnemyName);
 }
