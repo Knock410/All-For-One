@@ -105,9 +105,13 @@ var fight = function (enemyName) {
   }
 };
 //Start Game function 
-  var startGame = function () {
+  var startGame = function () {     
+// debugger;
+playerHealth = 100;
+playerAttack = 10;
+playerMoney = 10;
     for (var i = 0; i < enemyNames.length; i++) {
-        // debugger;
+        
       //Allows the loop to intergrate different combatants for the use to fight and start with full health of 50 points
       if (playerHealth > 0) {
         //Allows to show what round it is after each defeat of the enemy
@@ -122,6 +126,7 @@ var fight = function (enemyName) {
         break;
       }
     }
+    startGame(); 
   };
 
 
