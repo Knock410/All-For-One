@@ -1,7 +1,7 @@
 window.alert("You're good and going to be greater.");
 var playerName = window.prompt("What is your name fighter ?");
 var playerHealth = 100;
-var playerAttack = 20;
+var playerAttack = 70;
 var playerMoney = 10;
 
 var enemyNames = ["Draco", "Hanami", "Lance"];
@@ -108,7 +108,7 @@ var fight = function (enemyName) {
   var startGame = function () {     
 // debugger;
 playerHealth = 100;
-playerAttack = 10;
+playerAttack = 100;
 playerMoney = 10;
     for (var i = 0; i < enemyNames.length; i++) {
         
@@ -126,9 +126,32 @@ playerMoney = 10;
         break;
       }
     }
-    startGame(); 
+    
+    // startGame(); 
+    endGame();
   };
+//This function will execute when the player defeats all enemies or is defeated 
+  var endGame = function(){
+    if (playerHealth > 0){
+    window.alert(" The game has ended. Check out your stats!");
+    window.alert(playerName + " has " + playerMoney + " coins left .");
+    
+  } else {
+    window.alert(" You lost !")
+  }
+  var playAgainConfirm = window.confirm(" Want to brawl again ? ");
+
+  if(playAgainConfirm){
+    startGame();
+    
+  }
+  else{
+    window.alert(" Okay. Come back when you're ready to fight again ");
+  };
+
+  }
 
 
 startGame(); 
 
+// endGame();
