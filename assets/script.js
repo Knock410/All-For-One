@@ -1,3 +1,4 @@
+//Global Scopes 
 window.alert("You're good and going to be greater.");
 var playerName = window.prompt("What is your name fighter ?");
 var playerHealth = 100;
@@ -17,6 +18,10 @@ window.alert(
     " it's time to engage and rise to the top!"
 );
 
+
+
+
+//Function 
 var fight = function (enemyName) {
   while (playerHealth > 0 && enemyHealth > 0) {
     //Asking the player if they would like to start a combat round
@@ -104,12 +109,14 @@ var fight = function (enemyName) {
     }
   }
 };
+
+
 //Start Game function 
   var startGame = function () {     
 // debugger;
 playerHealth = 100;
 playerAttack = 100;
-playerMoney = 10;
+playerMoney = 100;
     for (var i = 0; i < enemyNames.length; i++) {
         
       //Allows the loop to intergrate different combatants for the use to fight and start with full health of 50 points
@@ -121,15 +128,17 @@ playerMoney = 10;
         enemyHealth = 50;
         //Function call. This is essentially the start button of the function
         fight(pickedEnemyName);
-      } else {
-        window.alert("You have been knocked out ! Better luck next time ! ");
-        break;
-      }
-    }
+        //If an array has 10 items in length(0,1,2,3,4,5,6,7,8,9) minus 1 of the array will always be the final item of the array
+        if(playerHealth> 0 && i < enemyNames.length -1 ) {
+            shop();
+          }
+        }
+        }
+    // endGame function 
+ endGame();
+      
     
-    // startGame(); 
-    endGame();
-  };
+      }
 //This function will execute when the player defeats all enemies or is defeated 
   var endGame = function(){
     if (playerHealth > 0){
@@ -141,6 +150,8 @@ playerMoney = 10;
   }
   var playAgainConfirm = window.confirm(" Want to brawl again ? ");
 
+
+  
   if(playAgainConfirm){
     startGame();
     
@@ -149,9 +160,22 @@ playerMoney = 10;
     window.alert(" Okay. Come back when you're ready to fight again ");
   };
 
-  }
+  
+  };
+
+  var shop = function(){
+    console.log("Entered the shop");
+  };
+     
+
+  
 
 
+  
+
+    
+//Start button to the game 
+debugger 
 startGame(); 
 
-// endGame();
+    
