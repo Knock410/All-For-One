@@ -130,7 +130,12 @@ playerMoney = 100;
         fight(pickedEnemyName);
         //If an array has 10 items in length(0,1,2,3,4,5,6,7,8,9) minus 1 of the array will always be the final item of the array
         if(playerHealth> 0 && i < enemyNames.length -1 ) {
-            shop();
+            var storeConfirm = window.confirm("The fight is over, visit the store before the next round ?");
+            //Asking user to visit the shop 
+            if(storeConfirm){
+        
+          shop();
+        };
           }
         }
         }
@@ -164,18 +169,66 @@ playerMoney = 100;
   };
 
   var shop = function(){
-    console.log("Entered the shop");
-  };
-     
-
+   var shopOptionPrompt = window.prompt( "Would you like to Refill your health, upgrade your power or leave the store? Chose to one: 'Refill', 'Upgrade', or 'Leave' ");
+    
   
+     
+// var num = 5
+// //switch statments 
+// switch(num) {
+//   case 1:
+//     console.log("Chose 1");
+//     break;
+//   case 2:
+//     console.log("Chose 2");
+//     break;
+//   case 3:
+//     console.log("Chose 3");
+//     break;
+//   default:
+//   console.log("Choose a different option");
+// }
+  
+switch (shopOptionPrompt) {
+  case "refill":
+  case "Refill":
+    if(playerMoney >= 7){
+      window.alert("Refilling playr's health by 20 for 7 coins.")
+  
+   
+    playerHealth = playerHealth + 20;
+    playerMoney = playerMoney - 7;
+  }else{
+    window.alert("You don't have enough coins!");
+  }
 
+    break;
+  case "upgrade":
+  case "Upgrade":
+    if(playerMoney >= 7){
+      
+    window.alert("Upgrading player attack by 6 for 7 coins");
+  playerAttack = playerAttack + 6;
+  playerMoney = playerMoney - 7;
+    }else
+    window.alert(" You don't have enough coins!"); 
+  break;
+  case "leave":
+    window.alert("You left the shop");
+  break;
+  default:
+    window.alert("Pick a valid option");
+    //calls the shop function again
+    shop();
+    break;
+}
+};
 
   
 
     
 //Start button to the game 
-debugger 
+//  debugger 
 startGame(); 
 
     
