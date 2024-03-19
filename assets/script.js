@@ -1,14 +1,9 @@
 //Global Scopes 
 window.alert("You're good and going to be greater.");
 var playerName = window.prompt("What is your name fighter ?");
-var playerHealth = 100;
-var playerAttack = 70;
-var playerMoney = 10;
 
 var enemyNames = ["Draco", "Hanami", "Lance"];
 
-var enemyHealth = 50;
-var enemyAttack = 12;
 
 // window.alert("Welcome to Random Encounter!!!!!");
 
@@ -38,7 +33,7 @@ var fight = function (enemyName) {
         );
         var fee = 10;
 
-        playerMoney = playerMoney - fee;
+        playerMoney = Math.max(0,playerMoney - fee);
         window.alert(
           playerName +
             " paid a " +
@@ -51,17 +46,12 @@ var fight = function (enemyName) {
         );
         console.log("playerMoney", playerMoney);
         break;
-        //   } else {
-        //     window.alert(" Are you fighting or not ???");
-        //     fight();
-        //   }
-        // } else {
-        //   window.alert(" Please choose to proceed into the fray or to back out!!!");
-        // }
+  
       }
     }
     //Player Attack:Subtract the value of the playerattack from the value of the enemyhealth and use that result to update the enemyhealth
-    enemyHealth = enemyHealth - playerAttack;
+    var damage = randomNumber(playerAttack - 3, playerAttack);
+    enemyHealth = Math.max(0,enemyHealth - damage);
 
     //Check enemy health
     console.log(
@@ -86,7 +76,8 @@ var fight = function (enemyName) {
       );
     }
     //Enemy Attack:subtact the value of the enemyattack fromt he valued of the playerhealth and use the result to update the playerhealth
-    playerHealth = playerHealth - enemyAttack;
+    var damage = randomNumber(enemyAttack-3, enemyAttack)
+    playerHealth = Math.max( 0, playerHealth - damage);
     //Check Player Health
     console.log(
       enemyName +
@@ -114,9 +105,9 @@ var fight = function (enemyName) {
 //Start Game function 
   var startGame = function () {     
 // debugger;
-playerHealth = 100;
-playerAttack = 100;
-playerMoney = 100;
+playerHealth = 150;
+playerAttack = 25;
+playerMoney = 10;
     for (var i = 0; i < enemyNames.length; i++) {
         
       //Allows the loop to intergrate different combatants for the use to fight and start with full health of 50 points
@@ -125,7 +116,11 @@ playerMoney = 100;
         window.alert("Welcome to Random Encounter! Round " + (i + 1));
 
         var pickedEnemyName = enemyNames[i];
-        enemyHealth = 50;
+        enemyHealth =  randomNumber(40,60);
+        enemyAttack = Math.floor(Math.random()*11) + 40 
+        console.log("Enemy power is " + enemyAttack);
+        console.log("Enemy health is " + enemyHealth)
+        ;
         //Function call. This is essentially the start button of the function
         fight(pickedEnemyName);
         //If an array has 10 items in length(0,1,2,3,4,5,6,7,8,9) minus 1 of the array will always be the final item of the array
@@ -152,6 +147,7 @@ playerMoney = 100;
     
   } else {
     window.alert(" You lost !")
+    
   }
   var playAgainConfirm = window.confirm(" Want to brawl again ? ");
 
@@ -173,21 +169,7 @@ playerMoney = 100;
     
   
      
-// var num = 5
-// //switch statments 
-// switch(num) {
-//   case 1:
-//     console.log("Chose 1");
-//     break;
-//   case 2:
-//     console.log("Chose 2");
-//     break;
-//   case 3:
-//     console.log("Chose 3");
-//     break;
-//   default:
-//   console.log("Choose a different option");
-// }
+
   
 switch (shopOptionPrompt) {
   case "refill":
@@ -207,13 +189,14 @@ switch (shopOptionPrompt) {
   case "Upgrade":
     if(playerMoney >= 7){
       
-    window.alert("Upgrading player attack by 6 for 7 coins");
-  playerAttack = playerAttack + 6;
+    window.alert("Upgrading player attack by 10 for 7 coins");
+  playerAttack = playerAttack + 10;
   playerMoney = playerMoney - 7;
     }else
     window.alert(" You don't have enough coins!"); 
   break;
   case "leave":
+  case "Leave":
     window.alert("You left the shop");
   break;
   default:
@@ -223,12 +206,19 @@ switch (shopOptionPrompt) {
     break;
 }
 };
+//Break down of parentheses (min, max)  min is the lower limit while max is the upper limit of the range of possible numbers 
+var randomNumber =function(min,max){
+  var value = Math.floor(Math.random()* (max-min+ 1)+ min) ;
+  //This will generate the value of the function 
+  return value;
+  
 
+};
   
 
     
 //Start button to the game 
-//  debugger 
+  // debugger 
 startGame(); 
 
     
