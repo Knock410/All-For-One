@@ -9,7 +9,20 @@ var playerInfo = {
   money: 20,
 };
 
-var enemyNames = ["Draco", "Hanami", "Lance"];
+var enemyInfo = [
+  {
+    name: "Draco",
+    attack: 15
+  },
+  {
+    name: "Hanami",
+    attack: 20
+  },
+  {
+    name: "Lance",
+    attack: 25
+  }
+]; 
 
 // window.alert("Welcome to Random Encounter!!!!!");
 
@@ -20,8 +33,9 @@ window.alert(
 );
 
 //Function
-var fight = function (enemyName) {
-  while (playerInfo.health > 0 && enemyHealth > 0) {
+var fight = function (enemy) {
+  console.log(enemy);
+  while (playerInfo.health > 0 && enemy.health > 0) {
     //Asking the player if they would like to start a combat round
     var promptFight = window.prompt(
       "Are you ready for combat " + playerInfo.name + " ?  Enter 'FIGHT' or 'SKIP'"
@@ -51,38 +65,38 @@ var fight = function (enemyName) {
         break;
       }
     }
-    //Player Attack:Subtract the value of the playerattack from the value of the enemyhealth and use that result to update the enemyhealth
+    //Player Attack:Subtract the value of the playerattack from the value of the enemy.health and use that result to update the enemy.health
     var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
-    enemyHealth = Math.max(0, enemyHealth - damage);
+    enemy.health = Math.max(0, enemy.health - damage);
 
     //Check enemy health
     console.log(
       playerInfo.name   +
         " attacked " +
-        enemyName +
+        enemy.name +
         ". " +
-        enemyName +
+        enemy.name +
         " has " +
-        enemyHealth +
+        enemy.health +
         " health remaining !"
     );
     // Check enemy status
-    if (enemyHealth <= 0) {
-      window.alert(enemyName + " has fallen !");
+    if (enemy.health <= 0) {
+      window.alert(enemy.name + " has fallen !");
       break;
     } else {
       window.alert(
         "Even with that devastating attack " +
-          enemyName +
+          enemy.name +
           " is still standing !"
       );
     }
-    //Enemy Attack:subtact the value of the enemyattack fromt he valued of the playerInfo.health and use the result to update the playerInfo.health
-    var damage = randomNumber(enemyAttack - 3, enemyAttack);
+    //Enemy Attack:subtact the value of the enemy.attack fromt he valued of the playerInfo.health and use the result to update the playerInfo.health
+    var damage = randomNumber(enemy.attack - 3, enemy.attack);
     playerInfo.health = Math.max(0, playerInfo.health - damage);
     //Check Player Health
     console.log(
-      enemyName +
+      enemy.name +
         " attacked " +
         playerInfo.name   +
         ". " +
@@ -109,21 +123,22 @@ var startGame = function () {
   playerInfo.health = 150;
   playerInfo.attack = 25;
   playerInfo.money = 10;
-  for (var i = 0; i < enemyNames.length; i++) {
+  for (var i = 0; i < enemyInfo.length; i++) {
     //Allows the loop to intergrate different combatants for the use to fight and start with full health of 50 points
     if (playerInfo.health > 0) {
       //Allows to show what round it is after each defeat of the enemy
       window.alert("Welcome to Random Encounter! Round " + (i + 1));
 
-      var pickedEnemyName = enemyNames[i];
-      enemyHealth = randomNumber(40, 60);
-      enemyAttack = Math.floor(Math.random() * 11) + 40;
-      console.log("Enemy power is " + enemyAttack);
-      console.log("Enemy health is " + enemyHealth);
+      var pickedEnemyObj = enemyInfo[i];
+      pickedEnemyObj.health = randomNumber(40, 60);
+      // pickedEnemyObj.attack = Math.floor(Math.random() * 11) + 40;
+      // console.log(enemyInfo[i]);
+      // console.log("Enemy power is " + pickedEnemyObj.attack);
+      // console.log("Enemy health is " + pickedEnemyObj.health);
       //Function call. This is essentially the start button of the function
-      fight(pickedEnemyName);
+      fight(pickedEnemyObj);
       //If an array has 10 items in length(0,1,2,3,4,5,6,7,8,9) minus 1 of the array will always be the final item of the array
-      if (playerInfo.health > 0 && i < enemyNames.length - 1) {
+      if (playerInfo.health > 0 && i < enemyInfo.length - 1) {
         var storeConfirm = window.confirm(
           "The fight is over, visit the store before the next round ?"
         );
@@ -199,5 +214,5 @@ var randomNumber = function (min, max) {
 };
 
 //Start button to the game
-// debugger
+
 startGame();
